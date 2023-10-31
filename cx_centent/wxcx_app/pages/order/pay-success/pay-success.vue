@@ -91,7 +91,7 @@
 	.pay-success .success-icon .iconfont {
 		padding: 30rpx;
 		// background: #04BE01;
-		background-color: #00ff7f;
+		background-color: #3bb976;
 		border-radius: 50%;
 		font-size: 80rpx;
 		color: #FFFFFF;
@@ -122,7 +122,7 @@
 
 	.pay-success .success-btns button.btn1 {
 		font-size: 30rpx;
-		background-color: #00ff7f;
+		background-color: #3bb976;
 		@include font_color('text_color');
 	}
 
@@ -130,7 +130,7 @@
 		font-size: 30rpx;
 		border: 1px solid #04BE01;
 		// color: #04BE01;
-		border-color: #00ff7f;
-		color: #00ff7f;
+		border-color: #3bb976;
+		color: #3bb976;
 	}
 </style>

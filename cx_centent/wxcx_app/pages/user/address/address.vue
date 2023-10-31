@@ -189,8 +189,8 @@
 		font-size: 32rpx;
 		font-family: PingFang SC;
 		font-weight: 500;
-		color: #00ff7f;
-		border-color: #00ff7f;
+		color: #3bb976;
+		border-color: #3bb976;
 		margin: 0 auto;
 	}
 
@@ -212,7 +212,7 @@
 		font-family: PingFang SC;
 		font-weight: 500;
 		color: #F6220C;
-		color: #00ff7f;
+		color: #3bb976;
 	}
 
 	.add_icon_img {

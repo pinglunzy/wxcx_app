@@ -75,7 +75,7 @@
 		height: 266rpx;
 		border-radius: 20rpx;
 		// @include background_color("background_color");
-		background-color: #00ff7f;
+		background-color: #3bb976;
 	}
 
 	.diy-banner-xf {

@@ -657,7 +657,7 @@
 			width: 10rpx;
 			height: 27rpx;
 			// background: #FFCC00;
-			background-color: #00ff7f;
+			background-color: #3bb976;
 			border-radius: 5rpx;
 			position: absolute;
 			top: 0;
@@ -853,7 +853,7 @@
 	.pop-btn {
 		width: 452rpx;
 		height: 76rpx;
-		background: #9b90c3;
+		background: #3bb976;
 		border-radius: 38rpx;
 		color: #ffffff;
 		line-height: 1.5;
