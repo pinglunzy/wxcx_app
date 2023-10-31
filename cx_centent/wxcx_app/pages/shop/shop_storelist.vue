@@ -471,7 +471,7 @@
 		justify-content: center;
 		align-items: center;
 		font-size: 22rpx;
-		@include border_color("border_color");
+		border-color: #00ff7f;
 		@include background_color("background_color");
 	}
 

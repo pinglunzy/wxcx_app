@@ -122,7 +122,7 @@
 	}
 
 	.diy-navbar .item .icon-jiantou {
-		@include font_color("font_color");
+		color: #00ff7f;
 		font-size: 26rpx;
 		margin-left: 12rpx;
 	}
