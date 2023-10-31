@@ -69,20 +69,20 @@ body {
 	color: rgba(168, 112, 13, 1);
 }
 .dominant{
-	color: #00ff7f;
+	color: #3bb976;
 }
 .text_color{
 	@include font_color("text_color");
 }
 .theme-bg{
-	background-color: #00ff7f;
+	background-color: #3bb976;
 }
 .theme-border{
-	border-color: #00ff7f;
+	border-color: #3bb976;
 }
 .theme-btn{
-	border-color: #00ff7f;
-	background-color: #00ff7f;
+	border-color: #3bb976;
+	background-color: #3bb976;
 	@include text_color("text_color");
 }
 .theme-linbtn{
@@ -92,8 +92,8 @@ body {
 .theme-borderbtn{
 	background:none;
 	border: 1rpx solid;
-	border-color: #00ff7f;
-	color: #00ff7f;
+	border-color: #3bb976;
+	color: #3bb976;
 }
 /*button*/
 button {
@@ -128,7 +128,7 @@ button.btn-yellow {
 	color: #FFFFFF;
 }
 button.btn-normal {
-	background-color: #00ff7f;
+	background-color: #3bb976;
 	@include text_color("text_color");
 }
 
@@ -1458,7 +1458,7 @@ image {
 	content: '';
 	width: 120rpx;
 	height: 6rpx;
-	background-color: #00ff7f;
+	background-color: #3bb976;
 	border-radius: 2rpx;
 	position: absolute;
 	left: 0;
@@ -1658,8 +1658,8 @@ uni-image {
 
 .cashier-pop .cashier-item.active .icon-box {
 	border: 1rpx solid #72DEED;
-	border-color: #00ff7f;
-	background-color: #00ff7f;
+	border-color: #3bb976;
+	background-color: #3bb976;
 }
 
 .cashier-pop .pay-btn {
@@ -1674,5 +1674,5 @@ uni-image {
 	left: 20rpx;
 	bottom: 20rpx;
 	border-radius: 48rpx;
-	background-color: #00ff7f;
+	background-color: #3bb976;
 }

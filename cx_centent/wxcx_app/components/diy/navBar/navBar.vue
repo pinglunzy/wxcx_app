@@ -81,7 +81,7 @@
 		box-sizing: border-box;
 		padding: 20rpx;
 		box-sizing: border-box;
-		box-shadow: 0px 3rpx 6rpx rgba(0, 0, 0, 0.16);
+		box-shadow: 0px 2rpx 8rpx rgba(0, 0, 0, 0.1);
 		border-radius: 18rpx;
 	}
 
@@ -91,6 +91,7 @@
 		align-items: flex-start;
 		width: 690rpx;
 		height: 150rpx;
+		background-color: white;
 	}
 
 	.diy-navbar .item.rowsNum2 {
@@ -99,6 +100,7 @@
 		align-items: center;
 		width: 330rpx;
 		height: 254rpx;
+		background-color: white;
 	}
 
 	.diy-navbar .item image {
@@ -122,7 +124,7 @@
 	}
 
 	.diy-navbar .item .icon-jiantou {
-		color: #00ff7f;
+		color: #3bb976;
 		font-size: 26rpx;
 		margin-left: 12rpx;
 	}

@@ -171,11 +171,11 @@ page {
 				font-weight: bold;
 				color: #282828;
 				border: 1rpx solid;
-				border-color: #00ff7f;
+				border-color: #3bb976;
 				box-sizing: border-box;
 				&.active {
 					color: #ffffff;
-					background-color: #00ff7f;
+					background-color: #3bb976;
 				}
 			}
 			
@@ -200,8 +200,8 @@ page {
 		.reduce_item{
 			padding: 2rpx 10rpx;
 			border: 2rpx solid;
-			border-color: #00ff7f;
-			color: #00ff7f;
+			border-color: #3bb976;
+			color: #3bb976;
 			font-size: 22rpx;
 			border-radius: 5rpx;
 			display: inline-block;
@@ -253,7 +253,7 @@ page {
 					margin: auto;
 					left: 0;
 					height: 91rpx;
-					background-color: #00ff7f;
+					background-color: #3bb976;
 				}
 			
 			}
@@ -333,8 +333,8 @@ page {
 								border-radius: 5rpx;
 								padding: 2rpx 6rpx;
 								border: 1rpx solid;
-								border-color: #00ff7f;
-								color: #00ff7f;
+								border-color: #3bb976;
+								color: #3bb976;
 								margin-bottom: 10rpx;
 							}
 							.name {
@@ -392,8 +392,8 @@ page {
 											width: 106rpx;
 											height: 52rpx;
 											border-radius: 10rpx;
-											border-color: #00ff7f;
-											background-color: #00ff7f;	
+											border-color: #3bb976;
+											background-color: #3bb976;	
 											@include text_color('text_color');	
 											font-size: 26rpx;
 											font-weight: bold;
@@ -401,13 +401,13 @@ page {
 											padding: 0;
 										}
 										&.add_btn{
-											border-color: #00ff7f;
-											background-color: #00ff7f;	
+											border-color: #3bb976;
+											background-color: #3bb976;	
 										}
 										&.add_btn,
 										&.reduce_btn {							
 											border: $dominant-color 1rpx solid;
-											border-color: #00ff7f;
+											border-color: #3bb976;
 											color: #FFFFFF;
 											padding: 0;
 											width: 40rpx;
@@ -420,8 +420,8 @@ page {
 										position: absolute;
 										background-color: #ffffff;
 										border: 1rpx solid;
-										border-color: #00ff7f;
-										color: #00ff7f;
+										border-color: #3bb976;
+										color: #3bb976;
 										font-size: 20rpx;
 										width: 26rpx;
 										height: 26rpx;
@@ -547,7 +547,7 @@ page {
 		align-items: center;
 		font-size: 32rpx;
 		@include text_color('text_color');
-		background-color: #00ff7f;
+		background-color: #3bb976;
 		margin-right: 25rpx;
 	}
 	button[disabled]:not([type]){
@@ -596,7 +596,7 @@ page {
 
 	.iconsami-select{
 		font-size: 20rpx;
-		color: #00ff7f;
+		color: #3bb976;
 	}
 	.iconadd-select{
 		color: #FFFFFF;
@@ -604,7 +604,7 @@ page {
 	}
 	.cart-list .iconadd-select{
 		font-size: 20rpx;
-		color: #00ff7f;
+		color: #3bb976;
 	}
 	.container{
 		padding: 0;
@@ -612,7 +612,7 @@ page {
 	.off_business {
 		position: fixed;
 		width: 550rpx;
-		background-color: #00ff7f;
+		background-color: #3bb976;
 		opacity: 0.8;
 		color: #fff;
 		line-height: 50rpx;
@@ -698,9 +698,9 @@ page {
 				margin-right: 19rpx;
 				margin-bottom: 27rpx;
 				border: 1rpx solid;
-				border-color: #00ff7f;
+				border-color: #3bb976;
 				&.default {
-					background-color: #00ff7f;
+					background-color: #3bb976;
 					@include text_color('text_color');
 				}
 			}
@@ -771,7 +771,7 @@ page {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: #00ff7f;
+		background-color: #3bb976;
 		@include text_color('text_color');
 		font-size: 32rpx;
 		border-radius:29rpx;
@@ -898,7 +898,7 @@ page {
 		position: absolute;
 		top: -60rpx;
 		width: 100%;
-		background-color: #00ff7f;
+		background-color: #3bb976;
 		height: 60rpx;
 		line-height: 60rpx;
 		color: #282828;

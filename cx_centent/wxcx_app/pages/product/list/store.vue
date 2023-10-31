@@ -961,7 +961,7 @@
 		line-height: 104rpx;
 		font-size: 28rpx;
 		border-bottom: 1rpx solid;
-		border-color: #00ff7f;
+		border-color: #3bb976;
 		@include background_color('opacify_background_0');
 	}
 
@@ -979,6 +979,6 @@
 		line-height: 60rpx;
 		text-align: center;
 		@include font_color('text_color');
-		background-color: #00ff7f;
+		background-color: #3bb976;
 	}
 </style>

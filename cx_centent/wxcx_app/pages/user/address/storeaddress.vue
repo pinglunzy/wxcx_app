@@ -204,8 +204,8 @@
 	}
 
 	.red-btn {
-		color: #00ff7f;
-		border-color: #00ff7f;
+		color: #3bb976;
+		border-color: #3bb976;
 	}
 
 	.add_add {
@@ -226,7 +226,7 @@
 		font-family: PingFang SC;
 		font-weight: 500;
 		color: #F6220C;
-		color: #00ff7f;
+		color: #3bb976;
 	}
 
 	.add_icon_img {
