@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="diy-banner-box">
-			<swiper class="swiper" indicator-dots="true"  :indicator-active-color="indicatorActiveColor"
+			<swiper class="swiper" circular="true" indicator-dots="true"  :indicator-active-color="indicatorActiveColor"
 				:autoplay="autoplay" :interval="interval" :duration="duration">
 				<swiper-item v-for="(item,index) in itemData.data" :key="index" @click="gotoPages(item)">
 					<image :src="item.imgUrl"></image>
@@ -72,7 +72,7 @@
 		flex-direction: column;
 		align-items: center;
 		width: 320rpx;
-		height: 266rpx;
+		height: 280rpx;
 		border-radius: 20rpx;
 		// @include background_color("background_color");
 		background-color: #3bb976;
@@ -83,9 +83,11 @@
 		margin: 0 auto;
 		position: relative;
 		margin-top: 20rpx;
+		margin-bottom: 20rpx;
 		padding: 20rpx;
 		background-color: white;
-		border-radius: 10rpx;
+		border-radius: 18rpx;
+		box-shadow: 0px 2rpx 8rpx rgba(0, 0, 0, 0.1);
 	}
 
 	.rides {
