@@ -43,12 +43,14 @@
         </view>
       </view>
       <!--搜索 -->
-      <view
-        ><uni-search-bar
+      <view>
+        <uni-search-bar
           placeholder="请输入"
           bgColor="#EEEEEE"
-          bindinput="clickSearch"
-      /></view>
+          cancelButton="none"
+          @tap="toSearch"
+        />
+      </view>
       <view class="content">
         <scroll-view
           class="menus"
@@ -406,6 +408,7 @@ export default {
       reduce: {},
       reduce_diff_value: 0,
       line_price: 0,
+      goods_data: {},
     };
   },
   onLoad(e) {
@@ -429,6 +432,7 @@ export default {
   onShow() {
     let self = this;
     self.init();
+    // console.log("得到焦點11",this.goods_data);
   },
   computed: {
     menuCartNum() {
@@ -442,6 +446,18 @@ export default {
     },
   },
   methods: {
+    //跳轉搜索頁面
+    toSearch() {
+      let goods_list = this.goods_list;
+      let delivery = this.orderType == "takeout" ? 10 : 20;
+      uni.navigateTo({
+        url:
+          "/pages/product/search/search?goods_list=" +
+          JSON.stringify(goods_list) +
+          "&delivery=" +
+          delivery,
+      });
+    },
     scrollInit() {
       let self = this;
       if (self.scrollviewHigh) {
@@ -505,6 +521,7 @@ export default {
               return;
             });
           }
+          self.goods_data = res.data.goods_data;
           self.reduceList = res.data.reduceList;
           self.min_money = (res.data.supplier.min_money * 1).toFixed(2);
           self.goods_list = res.data.list;
