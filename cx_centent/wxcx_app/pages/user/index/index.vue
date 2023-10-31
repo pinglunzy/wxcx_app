@@ -657,7 +657,7 @@
 			width: 10rpx;
 			height: 27rpx;
 			// background: #FFCC00;
-			@include background_color('background_color');
+			background-color: #00ff7f;
 			border-radius: 5rpx;
 			position: absolute;
 			top: 0;

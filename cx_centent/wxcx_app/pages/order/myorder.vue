@@ -433,7 +433,7 @@
 		border-radius: 4rpx;
 		background: #ffe7e4;
 		font-size: 22rpx;
-		@include font_color('font_color');
+		color: #00ff7f;
 	}
 
 	.shop-name {
@@ -579,12 +579,12 @@
 	}
 
 	.order-list .order-bts button.btn-red {
-		@include background_color('background_color');
+		background-color: #00ff7f;
 		font-size: 28rpx;
 		font-family: PingFang SC;
 		@include text_color('text_color');
 		border: 1rpx solid;
-		@include border_color('border_color');
+		border-color: #00ff7f;
 	}
 
 	.buy-checkout {
@@ -653,7 +653,7 @@
 		justify-content: center;
 		align-items: center;
 		border: 2rpx solid;
-		@include border_color('border_color');
+		border-color: #00ff7f;
 		box-sizing: border-box;
 	}
 
@@ -682,26 +682,26 @@
 	}
 
 	.tab-item-top.active {
-		@include background_color('background_color');
+		background-color: #00ff7f;
 		@include text_color('text_color');
 	}
 
 	.delivery_type {
 		width: 120rpx;
 		height: 50rpx;
-		@include font_color('font_color');
+		color: #00ff7f;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		border-radius: 8rpx;
 		border: 1rpx solid;
-		@include border_color('border_color');
+		border-color: #00ff7f;
 		box-sizing: border-box;
 		background-color: #ffffff;
 	}
 
 	.delivery_type.active {
-		@include background_color('background_color');
+		background-color: #00ff7f;
 		color: #ffffff;
 	}
 
@@ -815,8 +815,8 @@
 
 	.cashier-item.active .icon-box {
 		border: 1rpx solid #72deed;
-		@include border_color('border_color');
-		@include background_color('background_color');
+		border-color: #00ff7f;
+		background-color: #00ff7f;
 	}
 
 	.pay-btn {
@@ -830,6 +830,6 @@
 		position: absolute;
 		left: 0;
 		bottom: 0;
-		@include background_color('background_color');
+		background-color: #00ff7f;
 	}
 </style>

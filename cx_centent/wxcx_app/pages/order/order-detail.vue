@@ -628,8 +628,8 @@
 
 	.cashier-item.active .icon-box {
 		border: 1rpx solid #72DEED;
-		@include border_color('border_color');
-		@include background_color('background_color');
+		border-color: #00ff7f;
+		background-color: #00ff7f;
 	}
 
 	.pay-btn {
@@ -643,7 +643,7 @@
 		position: absolute;
 		left: 0;
 		bottom: 0;
-		@include background_color('background_color');
+		background-color: #00ff7f;
 	}
 
 	.foot-pay-btns button {

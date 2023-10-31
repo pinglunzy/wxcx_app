@@ -611,7 +611,7 @@
 	}
 
 	.pack_item.active .icon-xuanze {
-		@include font_color('font_color');
+		color: #00ff7f;
 	}
 
 	.right {
@@ -644,7 +644,7 @@
 				z-index: 1;
 				width: 490rpx;
 				height: 150rpx;
-				@include font_color('font_color');
+				color: #00ff7f;
 				background-color: #ffffff !important;
 				flex-shrink: 0;
 			}

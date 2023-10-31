@@ -69,20 +69,20 @@ body {
 	color: rgba(168, 112, 13, 1);
 }
 .dominant{
-	@include font_color("font_color");
+	color: #00ff7f;
 }
 .text_color{
 	@include font_color("text_color");
 }
 .theme-bg{
-	@include background_color("background_color");
+	background-color: #00ff7f;
 }
 .theme-border{
-	@include border_color("border_color");
+	border-color: #00ff7f;
 }
 .theme-btn{
-	@include border_color("border_color");
-	@include background_color("background_color");
+	border-color: #00ff7f;
+	background-color: #00ff7f;
 	@include text_color("text_color");
 }
 .theme-linbtn{
@@ -92,8 +92,8 @@ body {
 .theme-borderbtn{
 	background:none;
 	border: 1rpx solid;
-	@include border_color("border_color");
-	@include font_color("font_color");
+	border-color: #00ff7f;
+	color: #00ff7f;
 }
 /*button*/
 button {
@@ -128,7 +128,7 @@ button.btn-yellow {
 	color: #FFFFFF;
 }
 button.btn-normal {
-	@include background_color("background_color");
+	background-color: #00ff7f;
 	@include text_color("text_color");
 }
 
@@ -1458,7 +1458,7 @@ image {
 	content: '';
 	width: 120rpx;
 	height: 6rpx;
-	@include background_color("background_color");
+	background-color: #00ff7f;
 	border-radius: 2rpx;
 	position: absolute;
 	left: 0;
@@ -1658,8 +1658,8 @@ uni-image {
 
 .cashier-pop .cashier-item.active .icon-box {
 	border: 1rpx solid #72DEED;
-	@include border_color('border_color');
-	@include background_color("background_color");
+	border-color: #00ff7f;
+	background-color: #00ff7f;
 }
 
 .cashier-pop .pay-btn {
@@ -1674,5 +1674,5 @@ uni-image {
 	left: 20rpx;
 	bottom: 20rpx;
 	border-radius: 48rpx;
-	@include background_color("background_color");
+	background-color: #00ff7f;
 }
