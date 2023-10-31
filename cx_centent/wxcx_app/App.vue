@@ -150,10 +150,10 @@
 						let color = ['#ffcc00', '#623ceb', '#1774ff', '#19ad57', '#ff5704', '#c8ba97',
 
 						]
-						uni.setTabBarStyle({
-							color: '#333333',
-							selectedColor: color[theme],
-						})
+						// uni.setTabBarStyle({
+						// 	color: '#333333',
+						// 	selectedColor: color[theme],
+						// })
 						uni.setTabBarItem({
 							index: 0,
 							text: '首页',

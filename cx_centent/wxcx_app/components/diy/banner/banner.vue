@@ -11,14 +11,14 @@
 		<view class="diy-banner-xf d-b-c">
 			<view class="banner-xf-box" @click="gotoPage('/'+itemData.params.nav[0].navlinkUrl)">
 				<view class="rides">
-					<image :src="itemData.params.nav[0].navimgUrl"></image>
+					<image src="/static/bn_01.png"></image>
 				</view>
 				<view class="rides_title">{{itemData.params.nav[0].title}}</view>
 				<view class="rides_text">{{itemData.params.nav[0].text}}</view>
 			</view>
 			<view class="banner-xf-box" @click="gotoPage('/'+itemData.params.nav[1].navlinkUrl)">
 				<view class="rides">
-					<image :src="itemData.params.nav[1].navimgUrl" ></image>
+					<image src="/static/bn_02.png"></image>
 				</view>
 				<view class="rides_title">{{itemData.params.nav[1].title}}</view>
 				<view class="rides_text">{{itemData.params.nav[1].text}}</view>
