@@ -46,27 +46,30 @@
     </view>
     <!-- 展示搜索商品结算-->
     <view class="goods pr">
-      <view v-if="selected.length == 0 && total == true" style="width:100%;height:500rpx;display: flex;align-items: center;justify-content: center;align-items: center;">
-       <text style="font-size:large;opacity: 0.6;color: gray;">未找到您需要的内容</text>
+      <view
+        v-if="selected.length == 0 && total == true"
+        style="
+          width: 100%;
+          height: 500rpx;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <text style="font-size: 30rpx; opacity: 0.6; color: gray"
+          >未找到您需要的内容</text
+        >
       </view>
       <view class="wrapper" v-else>
         <view class="list">
           <!-- category begin -->
-          <template v-for="(item, index) in selected" :key="index">
-            <view
-              class="category"
-              v-if="item.products.length != 0"
-              :id="`cate-${item.category_id}`"
-            >
-              <view class="title">
-                <text>{{ item.name }}</text>
-              </view>
-              <view class="items">
+               <view class="items"> 
                 <!-- 商品 begin -->
                 <view
                   class="good"
                   @click="gotoDetail(good)"
-                  v-for="(good, key) in item.products"
+                  v-for="(good, key) in selected"
                   :key="key"
                 >
                   <image :src="good.product_image" class="image"></image>
@@ -87,7 +90,7 @@
                           >￥{{ good.line_price * 1 }}</text
                         >
                       </view>
-                      <view class="btn-group" v-if="good.spec_types == 20">
+                      <!-- <view class="btn-group" v-if="good.spec_types == 20">
                         <button
                           type="primary"
                           class="btn property_btn"
@@ -101,7 +104,7 @@
                           >{{ good.cart_num }}
                         </view>
                       </view>
-                      <view class="btn-group" v-else>
+                      <view class="btn-group" style="display:flex;" v-else>
                         <button
                           type="default"
                           v-if="good.cart_num != 0"
@@ -128,14 +131,14 @@
                             class="icon icon-jia iconfont iconadd-select"
                           ></view>
                         </button>
-                      </view>
+                      </view> -->
                     </view>
                   </view>
                 </view>
                 <!-- 商品 end -->
               </view>
-            </view>
-          </template>
+            <!-- </view> -->
+          <!-- </template> -->
           <!-- category end -->
         </view>
       </view>
@@ -151,12 +154,13 @@ export default {
       arr: [],
       goods_list: [],
       selected: [],
-      total:false,
+      total: false,
+      goods: [], //所有商品
+      cart_type: 0,
     };
   },
   onLoad(options) {
     this.goods_list = [...JSON.parse(options.goods_list)];
-
   },
   mounted() {
     /*获取缓存数据*/
@@ -196,13 +200,13 @@ export default {
           self.arr = arrs;
           //搜索时在全部商品中进行匹配
           for (let i = 0; i < goods_list.length; i++) {
-            for(let j = 0 ;j < goods_list[i].products.length; j++)
-            if (goods_list[i].products[j].product_name.includes(search)) {
-              selected.push(goods_list[i]);
-              self.selected = selected;
-            }
+            for (let j = 0; j < goods_list[i].products.length; j++)
+              if (goods_list[i].products[j].product_name.includes(search)) {
+                selected.push(goods_list[i].products[j]);
+              }
           }
-        self.total = true;
+          self.selected = selected;
+          self.total = true;
         } else {
           uni.showToast({
             title: "请输入搜索的关键字",
@@ -251,109 +255,6 @@ export default {
       self.detail = item;
       self.showGoodDetailModal();
     },
-    /* 购物车商品添加 */
-    cartAdd(goods) {
-      let self = this;
-      if (self.addclock) {
-        return;
-      }
-      self.addclock = true;
-      let num = goods.product_num + 1;
-      let product_id = goods.product_id;
-      let total_num = 1;
-      self._post(
-        "order.cart/sub",
-        {
-          product_id: product_id,
-          total_num: total_num,
-          cart_id: goods.cart_id,
-          type: "up",
-          cart_type: 0,
-          dinner_type: self.dinner_type,
-          shop_supplier_id: self.shop_supplier_id,
-          delivery: self.orderType == "takeout" ? 10 : 20,
-        },
-        function (res) {
-          self.addclock = false;
-          self.reCart(res);
-          self.goods_list.forEach((item, index) => {
-            item.products.forEach((product, product_index) => {
-              if (product.product_id == goods.product_id) {
-                self.$set(product, "cart_num", product.cart_num + 1);
-              }
-            });
-          });
-          self.$set(goods, "product_num", num);
-          self.$set(goods, "total_num", goods.total_num + 1);
-          self.addclock = false;
-          self.getCategory();
-        },
-        function () {
-          self.addclock = false;
-        }
-      );
-    },
-    addCart(goods) {
-      let self = this;
-      if (self.addclock) {
-        return;
-      }
-      if (goods.limit_num != 0 && goods.limit_num <= goods.cart_num) {
-        uni.showToast({
-          icon: "none",
-          title: "超过限购数量",
-        });
-        return;
-      }
-      if (goods.product_stock <= 0 || goods.product_stock <= goods.cart_num) {
-        uni.showToast({
-          icon: "none",
-          title: "没有更多库存了",
-        });
-        return;
-      }
-
-      let params = {
-        product_id: goods.product_id,
-        product_num: 1,
-        product_sku_id: goods.sku[0].product_sku_id,
-        attr: "",
-        feed: "",
-        describe: "",
-        price: goods.sku[0].product_price,
-        bag_price: goods.sku[0].bag_price,
-        shop_supplier_id: goods.supplier.shop_supplier_id,
-        cart_type: 0,
-        dinner_type: self.dinner_type,
-        product_price: goods.sku[0].line_price,
-        delivery: self.orderType == "takeout" ? 10 : 20,
-      };
-      self.addclock = true;
-      self._post(
-        "order.cart/add",
-        params,
-        function (res) {
-          let num = 1;
-          self.reCart(res);
-          if (goods.cart_num) {
-            num = goods.cart_num + 1;
-          }
-          self.goods_list.forEach((item, index) => {
-            item.products.forEach((product, product_index) => {
-              if (product.product_id == goods.product_id) {
-                self.$set(product, "cart_num", product.cart_num + 1);
-              }
-            });
-          });
-          self.addclock = false;
-          self.getCategory();
-        },
-        function (err) {
-          self.addclock = false;
-        }
-      );
-    },
-
     // 跳转到详情页
     gotoDetail(e) {
       let delivery = this.orderType == "takeout" ? 10 : 20;
@@ -375,7 +276,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="css">
 .search-wrap .index-search-box .search-box {
   padding: 0 20rpx;
   height: 64rpx;
@@ -413,53 +314,43 @@ export default {
   font-size: 24rpx;
 }
 /* 筛选后 */
-.goods {
-  flex: 1;
-  height: 100%;
-  overflow: hidden;
+.list {
+  width: 100%;
+  /* font-size: $font-size-base; */
   background-color: #ffffff;
-}
-.goods .wrapper {
-  width: 100%;
-  height: 100%;
-  padding: 20rpx;
-  box-sizing: border-box;
-}
-.goods .wrapper .list {
-  width: 100%;
-  font-size: $font-size-base;
+  padding:15rpx 0;
 }
 .goods .wrapper .list .category {
   width: 100%;
 }
-.goods .wrapper .list .category .title {
+.list .category .title {
   padding: 30rpx 0;
   display: flex;
   align-items: center;
-  color: $text-color-base;
+  /* color: $text-color-base; */
 }
-.goods .wrapper .list .category .title .icon {
+.list .category .title .icon {
   width: 38rpx;
   height: 38rpx;
   margin-left: 10rpx;
 }
-.goods .wrapper .list .items {
+.list .items {
   display: flex;
   flex-direction: column;
   padding-bottom: -30rpx;
 }
-.goods .wrapper .list .items .good {
+.list .items .good {
   display: flex;
   align-items: center;
   margin-bottom: 30rpx;
 }
-.goods .wrapper .list .items .good .image {
+.list .items .good .image {
   width: 160rpx;
   height: 160rpx;
   margin-right: 20rpx;
   border-radius: 8rpx;
 }
-.goods .wrapper .list .items .good .right {
+.list .items .good .right {
   flex: 1;
   min-height: 160rpx;
   overflow: hidden;
@@ -468,7 +359,7 @@ export default {
   align-items: flex-start;
   justify-content: space-between;
 }
-.goods .wrapper .list .items .good .right .discount {
+.list .items .good .right .discount {
   font-size: 20rpx;
   border-radius: 5rpx;
   padding: 2rpx 6rpx;
@@ -477,13 +368,13 @@ export default {
   color: #00ff7f;
   margin-bottom: 10rpx;
 }
-.goods .wrapper .list .items .good .right .name {
+.list .items .good .right .name {
   font-size: 30rpx;
   font-weight: 800;
   color: #3a3a3a;
   margin-bottom: 16rpx;
 }
-.goods .wrapper .list .items .good .right .tips {
+.list .items .good .right .tips {
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -491,121 +382,22 @@ export default {
   font-size: 24rpx;
   color: #28282850;
 }
-.goods .wrapper .list .items .good .right .price_and_action {
+.list .items .good .right .price_and_action {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.goods .wrapper .list .items .good .right .price_and_action .price {
+.list .items .good .right .price_and_action .price {
   font-size: 30rpx;
   font-weight: 600;
   color: #ff5800;
 }
-.goods .wrapper .list .items .good .right .price_and_action .linprice {
+.list .items .good .right .price_and_action .linprice {
   font-size: 22rpx;
   font-weight: 300;
   color: #999999;
   text-decoration: line-through;
-}
-.goods .wrapper .list .items .good .right .price_and_action.btn-group {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  flex-direction: row;
-}
-.goods .wrapper .list .items .good .right .price_and_action .btn-group .btn {
-  padding: 0 20rpx;
-  box-sizing: border-box;
-  font-size: $font-size-sm;
-  height: 40rpx;
-  width: 40rpx;
-  line-height: 40rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20rpx;
-}
-.goods
-  .wrapper
-  .list
-  .items
-  .good
-  .right
-  .price_and_action
-  .btn-group
-  .btn
-  .property_btn {
-  width: 106rpx;
-  height: 52rpx;
-  border-radius: 10rpx;
-  border-color: #00ff7f;
-  background-color: #00ff7f;
-  font-size: 26rpx;
-  font-weight: bold;
-  line-height: 52rpx;
-  padding: 0;
-}
-.goods
-  .wrapper
-  .list
-  .items
-  .good
-  .right
-  .price_and_action.btn-group
-  .btn
-  .add_btn {
-  border-color: #00ff7f;
-  background-color: #00ff7f;
-  border: $dominant-color 1rpx solid;
-  border-color: #00ff7f;
-  color: #ffffff;
-  padding: 0;
-  width: 40rpx;
-  border-radius: 50%;
-  font-size: 20rpx;
-}
-.goods
-  .wrapper
-  .list
-  .items
-  .good
-  .right
-  .price_and_action.btn-group
-  .btn
-  .reduce_btn {
-  border: $dominant-color 1rpx solid;
-  border-color: #00ff7f;
-  color: #ffffff;
-  padding: 0;
-  width: 40rpx;
-  border-radius: 50%;
-  font-size: 20rpx;
-}
-.goods .wrapper .list .items .good .right .price_and_action .btn-group .dot {
-  position: absolute;
-  background-color: #ffffff;
-  border: 1rpx solid;
-  border-color: #00ff7f;
-  color: #00ff7f;
-  font-size: 20rpx;
-  width: 26rpx;
-  height: 26rpx;
-  line-height: 26rpx;
-  text-align: center;
-  border-radius: 100%;
-  right: -12rpx;
-  top: -10rpx;
-}
-/* 列表 */
-.goods .wrapper .list .items .good .right .price_and_action .btn-group .number {
-  font-size: $font-size-base;
-  width: 40rpx;
-  height: 40rpx;
-  text-align: center;
-  line-height: 40rpx;
-  font-size: 24rpx;
 }
 </style>
