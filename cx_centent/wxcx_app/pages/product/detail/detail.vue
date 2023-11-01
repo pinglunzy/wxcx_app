@@ -455,7 +455,9 @@ export default {
 			self._post(url, params, function(res) {
 				self.clock = false;
 				// #ifndef H5
-				uni.navigateBack();
+				uni.navigateTo({
+					url:'/pages/product/list/takeaway',
+				});
 				// #endif
 				// #ifdef H5
 				history.go(-1);

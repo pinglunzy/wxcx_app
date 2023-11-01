@@ -45,16 +45,11 @@
       </view>
     </view>
     <!-- 展示搜索商品结算-->
-    <scroll-view
-      class="goods pr"
-      :style="'height:' + scrollviewHigh + 'px;'"
-      :scroll-with-animation="true"
-      :scroll-animation-duration="1"
-      scroll-y
-      :scroll-top="cateScrollTop"
-      @scroll="handleGoodsScroll"
-    >
-      <view class="wrapper">
+    <view class="goods pr">
+      <view v-if="selected.length == 0 && total == true" style="width:100%;height:500rpx;display: flex;align-items: center;justify-content: center;align-items: center;">
+       <text style="font-size:large;opacity: 0.6;color: gray;">未找到您需要的内容</text>
+      </view>
+      <view class="wrapper" v-else>
         <view class="list">
           <!-- category begin -->
           <template v-for="(item, index) in selected" :key="index">
@@ -144,7 +139,7 @@
           <!-- category end -->
         </view>
       </view>
-    </scroll-view>
+    </view>
   </view>
 </template>
 
@@ -156,10 +151,12 @@ export default {
       arr: [],
       goods_list: [],
       selected: [],
+      total:false,
     };
   },
   onLoad(options) {
-    this.goods_list = JSON.parse(options.goods_list);
+    this.goods_list = [...JSON.parse(options.goods_list)];
+
   },
   mounted() {
     /*获取缓存数据*/
@@ -189,6 +186,7 @@ export default {
       let arrs = this.arr || [];
       if (str != null) {
         search = str;
+        this.form.keyWord = search;
       } else {
         search = this.form.keyWord;
         if (typeof search != "undefined" && search != null && search != "") {
@@ -198,11 +196,13 @@ export default {
           self.arr = arrs;
           //搜索时在全部商品中进行匹配
           for (let i = 0; i < goods_list.length; i++) {
-            if (goods_list[i].name.includes(search)) {
+            for(let j = 0 ;j < goods_list[i].products.length; j++)
+            if (goods_list[i].products[j].product_name.includes(search)) {
               selected.push(goods_list[i]);
               self.selected = selected;
             }
           }
+        self.total = true;
         } else {
           uni.showToast({
             title: "请输入搜索的关键字",
@@ -224,10 +224,12 @@ export default {
     clearArr() {
       this.form.keyWord = "";
       this.selected = [];
+      this.total = false;
     },
     /*清楚缓存*/
     clearStorage() {
       let self = this;
+      this.total = false;
       uni.removeStorage({
         key: "search_list",
         success: function (res) {
@@ -291,67 +293,66 @@ export default {
         }
       );
     },
-	addCart(goods) {
-	  let self = this;
-	  if (self.addclock) {
-	    return;
-	  }
-	  if (goods.limit_num != 0 && goods.limit_num <= goods.cart_num) {
-	    uni.showToast({
-	      icon: "none",
-	      title: "超过限购数量",
-	    });
-	    return;
-	  }
-	  if (goods.product_stock <= 0 || goods.product_stock <= goods.cart_num) {
-	    uni.showToast({
-	      icon: "none",
-	      title: "没有更多库存了",
-	    });
-	    return;
-	  }
-	
-	  let params = {
-	    product_id: goods.product_id,
-	    product_num: 1,
-	    product_sku_id: goods.sku[0].product_sku_id,
-	    attr: "",
-	    feed: "",
-	    describe: "",
-	    price: goods.sku[0].product_price,
-	    bag_price: goods.sku[0].bag_price,
-	    shop_supplier_id: goods.supplier.shop_supplier_id,
-	    cart_type: 0,
-	    dinner_type: self.dinner_type,
-	    product_price: goods.sku[0].line_price,
-	    delivery: self.orderType == "takeout" ? 10 : 20,
-	  };
-	  self.addclock = true;
-	  self._post(
-	    "order.cart/add",
-	    params,
-	    function (res) {
-	      let num = 1;
-	      self.reCart(res);
-	      if (goods.cart_num) {
-	        num = goods.cart_num + 1;
-	      }
-	      self.goods_list.forEach((item, index) => {
-	        item.products.forEach((product, product_index) => {
-	          if (product.product_id == goods.product_id) {
-	            self.$set(product, "cart_num", product.cart_num + 1);
-	          }
-	        });
-	      });
-	      self.addclock = false;
-	      self.getCategory();
-	    },
-	    function (err) {
-	      self.addclock = false;
-	    }
-	  );
-	},
-	
+    addCart(goods) {
+      let self = this;
+      if (self.addclock) {
+        return;
+      }
+      if (goods.limit_num != 0 && goods.limit_num <= goods.cart_num) {
+        uni.showToast({
+          icon: "none",
+          title: "超过限购数量",
+        });
+        return;
+      }
+      if (goods.product_stock <= 0 || goods.product_stock <= goods.cart_num) {
+        uni.showToast({
+          icon: "none",
+          title: "没有更多库存了",
+        });
+        return;
+      }
+
+      let params = {
+        product_id: goods.product_id,
+        product_num: 1,
+        product_sku_id: goods.sku[0].product_sku_id,
+        attr: "",
+        feed: "",
+        describe: "",
+        price: goods.sku[0].product_price,
+        bag_price: goods.sku[0].bag_price,
+        shop_supplier_id: goods.supplier.shop_supplier_id,
+        cart_type: 0,
+        dinner_type: self.dinner_type,
+        product_price: goods.sku[0].line_price,
+        delivery: self.orderType == "takeout" ? 10 : 20,
+      };
+      self.addclock = true;
+      self._post(
+        "order.cart/add",
+        params,
+        function (res) {
+          let num = 1;
+          self.reCart(res);
+          if (goods.cart_num) {
+            num = goods.cart_num + 1;
+          }
+          self.goods_list.forEach((item, index) => {
+            item.products.forEach((product, product_index) => {
+              if (product.product_id == goods.product_id) {
+                self.$set(product, "cart_num", product.cart_num + 1);
+              }
+            });
+          });
+          self.addclock = false;
+          self.getCategory();
+        },
+        function (err) {
+          self.addclock = false;
+        }
+      );
+    },
 
     // 跳转到详情页
     gotoDetail(e) {
@@ -527,7 +528,16 @@ export default {
   align-items: center;
   font-size: 20rpx;
 }
-.goods .wrapper .list .items .good .right .price_and_action .btn-group .btn .property_btn {
+.goods
+  .wrapper
+  .list
+  .items
+  .good
+  .right
+  .price_and_action
+  .btn-group
+  .btn
+  .property_btn {
   width: 106rpx;
   height: 52rpx;
   border-radius: 10rpx;
@@ -538,9 +548,17 @@ export default {
   line-height: 52rpx;
   padding: 0;
 }
-.goods .wrapper .list .items .good .right .price_and_action.btn-group .btn .add_btn{
-	border-color: #00ff7f;
-	background-color: #00ff7f;
+.goods
+  .wrapper
+  .list
+  .items
+  .good
+  .right
+  .price_and_action.btn-group
+  .btn
+  .add_btn {
+  border-color: #00ff7f;
+  background-color: #00ff7f;
   border: $dominant-color 1rpx solid;
   border-color: #00ff7f;
   color: #ffffff;
@@ -549,7 +567,15 @@ export default {
   border-radius: 50%;
   font-size: 20rpx;
 }
-.goods .wrapper .list .items .good .right .price_and_action.btn-group .btn .reduce_btn {
+.goods
+  .wrapper
+  .list
+  .items
+  .good
+  .right
+  .price_and_action.btn-group
+  .btn
+  .reduce_btn {
   border: $dominant-color 1rpx solid;
   border-color: #00ff7f;
   color: #ffffff;
