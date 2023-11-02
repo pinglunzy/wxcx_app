@@ -1,6 +1,6 @@
 {
-    "name" : "三勾点单",
-    "appid" : "__UNI__792C7ED",
+    "name" : "capalot点单",
+    "appid" : "__UNI__75ADCC1",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : 100,
@@ -176,11 +176,11 @@
             "mode" : "hash",
             "base" : "/h5/"
         },
-        "title" : "三勾商城点餐系统",
+        "title" : "capalot点单",
         "devServer" : {
             "https" : false
         },
-        "template" : "三勾商城点餐系统",
+        "template" : "capalot点单",
         "sdkConfigs" : {
             "maps" : {
                 "qqmap" : {
