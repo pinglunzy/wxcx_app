@@ -315,7 +315,11 @@
 		/* #ifdef H5 */
 		margin-bottom: 100rpx;
 		/* #endif */
-		@include background_linear('background_color', 'opacify_background_0', 180deg, 0, 100%);
+		// @include background_linear('background_color', 'opacify_background_0', 180deg, 0, 100%);
+		background-color: #3bb976;
+	}
+	.order-box .mb40{
+		color: white;
 	}
 
 	.top-state {
@@ -533,7 +537,7 @@
 		.meal_item {
 			font-size: 24rpx;
 			margin-bottom: 38rpx;
-			color: #28282850;
+			color: #666;
 			display: flex;
 			justify-content: space-between;
 			align-items: flex-start;
