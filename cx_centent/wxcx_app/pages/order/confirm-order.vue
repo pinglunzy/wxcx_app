@@ -308,7 +308,6 @@
 					if (self.cart_type == 0) {
 						if (self.delivery_set.indexOf(self.delivery) == -1) {
 							if (self.delivery_set[0] == '10') {
-								console.log('执行');
 								self.tabFunc(0, true);
 							} else {
 								self.tabFunc(1, true);
@@ -403,7 +402,6 @@
 					this.dinner_type = 30;
 				}
 				if (!flag) {
-					console.log('切换');
 					this.getData();
 				}
 			},

@@ -239,7 +239,7 @@
 					});
 				});
 				jweixin.error(function(res) {
-					console.log(res);
+					// console.log(res);
 				});
 			},
 
@@ -267,10 +267,10 @@
 				let self = this;
 				uni.chooseLocation({
 					success: function(res) {
-						console.log('位置名称：' + res.name);
-						console.log('详细地址：' + res.address);
-						console.log('纬度：' + res.latitude);
-						console.log('经度：' + res.longitude);
+						// console.log('位置名称：' + res.name);
+						// console.log('详细地址：' + res.address);
+						// console.log('纬度：' + res.latitude);
+						// console.log('经度：' + res.longitude);
 						self.longitude = res.longitude;
 						self.latitude = res.latitude;
 						self.getrecord()

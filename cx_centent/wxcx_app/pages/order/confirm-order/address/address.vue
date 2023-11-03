@@ -83,7 +83,7 @@
 			    uni.openSetting({
 			      success(res) {
 			        if (res.authSetting["scope.userLocation"]) {
-			          console.log('授权成功');
+			        //   console.log('授权成功');
 					  self.isAuthor = true;
 			          setTimeout(() => {
 			            // 获取用户坐标
@@ -135,7 +135,7 @@
 					});
 				});
 				jweixin.error(function(res){
-				    console.log(res);
+				    // console.log(res);
 				});
 			},
 

@@ -89,13 +89,13 @@
 				});
 			},
 			onGetAuthorize(res) {
-				console.log('开始授权')
+				// console.log('开始授权')
 				let self = this;
 				uni.login({
 					provider: 'alipay',
 					success: function(loginRes) {
-						console.log("sucss")
-						console.log(loginRes)
+						// console.log("sucss")
+						// console.log(loginRes)
 						uni.getUserInfo({
 							provider: 'alipay',
 							success: function(infoRes) {
@@ -104,14 +104,14 @@
 						});
 					},
 					fail(err) {
-						console.log(err)
+						// console.log(err)
 					}
 				});
 			},
 			aliPayLogin(loginRes, infoRes) {
 				let self = this;
-				console.log(loginRes); // 获取用户信息 
-				console.log(infoRes);
+				// console.log(loginRes); // 获取用户信息 
+				// console.log(infoRes);
 				uni.showLoading({
 					title: '登录中',
 					mask: true

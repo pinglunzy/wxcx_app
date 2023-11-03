@@ -289,7 +289,6 @@
 					}
 				}
 				return '/pages/order/group/receipt?scene=' + result.scene;
-				console.log(result);
 			},
 			getPhoneNumber(e) {
 				var self = this;

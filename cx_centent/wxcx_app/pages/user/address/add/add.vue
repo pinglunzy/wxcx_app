@@ -107,17 +107,17 @@
 						self.address.longitude = res.longitude;
 						self.address.latitude = res.latitude;
 						self.address.detail = res.address;
-						console.log('位置名称：' + res.name);
-						console.log('详细地址：' + res.address);
-						console.log('纬度：' + res.latitude);
-						console.log('经度：' + res.longitude);
+						// console.log('位置名称：' + res.name);
+						// console.log('详细地址：' + res.address);
+						// console.log('纬度：' + res.latitude);
+						// console.log('经度：' + res.longitude);
 					},
 					fail(err) {
 						uni.setStorageSync('address', '');
-						console.log(err)
+						// console.log(err)
 					},
 					complete(com) {
-						console.log(com)
+						// console.log(com)
 					}
 				});
 			},
@@ -158,7 +158,7 @@
 
 
 				self._post('user.address/add', formdata, function(res) {
-					console.log(self.delta)
+					// console.log(self.delta)
 					self.showSuccess(res.msg, function() {
 						// #ifndef H5
 						uni.navigateBack({
@@ -173,7 +173,7 @@
 			},
 
 			formReset: function(e) {
-				console.log('清空数据');
+				// console.log('清空数据');
 			},
 
 			/*三级联动选择*/

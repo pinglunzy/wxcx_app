@@ -427,24 +427,24 @@
 									}
 									url = url.substring(0, url.length - 1);
 								}
-								console.log('url = ' + url);
+								// console.log('url = ' + url);
 								// 执行回调函数
 								gotopage(url);
 							}, false, () => {
 								uni.hideLoading();
 							});
 						}, function(e) {
-							console.log('登陆认证失败!');
+							// console.log('登陆认证失败!');
 							uni.showModal({
 								title: '认证失败1',
 								content: JSON.stringify(e),
 							});
 						});
 					} else {
-						console.log('已经登陆认证');
+						// console.log('已经登陆认证');
 					}
 				}, function(e) {
-					console.log("获取服务列表失败：" + JSON.stringify(e));
+					// console.log("获取服务列表失败：" + JSON.stringify(e));
 				})
 			},
 			/*改变发送验证码按钮文本*/
