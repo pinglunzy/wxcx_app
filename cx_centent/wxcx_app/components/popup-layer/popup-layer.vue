@@ -84,7 +84,6 @@
 		},
 		methods: {
 			stopMove(event) {
-				console.log(event);
 				return;
 			},
 			show(events) {

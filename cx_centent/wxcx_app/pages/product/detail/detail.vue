@@ -349,7 +349,7 @@ export default {
 		},
 		updateSpecProduct() {
 			this.product_price = this.form.show_sku.product_price;
-			console.log(this.product_lineprice)
+			// console.log(this.product_lineprice)
 			this.product_lineprice = this.form.show_sku.line_price;
 		},
 		/*商品增加*/
@@ -455,9 +455,10 @@ export default {
 			self._post(url, params, function(res) {
 				self.clock = false;
 				// #ifndef H5
-				uni.navigateTo({
-					url:'/pages/product/list/takeaway',
-				});
+				// uni.navigateTo(
+				// 	{url:'/pages/product/list/takeaway',}
+				// );
+				uni.navigateBack();
 				// #endif
 				// #ifdef H5
 				history.go(-1);

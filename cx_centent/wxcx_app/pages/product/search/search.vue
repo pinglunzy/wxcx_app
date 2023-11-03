@@ -160,7 +160,7 @@ export default {
     };
   },
   onLoad(options) {
-    this.goods_list = [...JSON.parse(options.goods_list)];
+    this.goods_list = JSON.parse(options.goods_list);
   },
   mounted() {
     /*获取缓存数据*/
