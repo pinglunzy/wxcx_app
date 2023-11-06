@@ -4,7 +4,7 @@
 			<swiper class="swiper" circular="true" indicator-dots="true"  :indicator-active-color="indicatorActiveColor"
 				:autoplay="autoplay" :interval="interval" :duration="duration">
 				<swiper-item v-for="(item,index) in itemData.data" :key="index" @click="gotoPages(item)">
-					<image :src="item.imgUrl"></image>
+					<image :src="item.imgUrl" mode="aspectFill"></image>
 				</swiper-item>
 			</swiper>
 		</view>

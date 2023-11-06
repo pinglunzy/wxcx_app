@@ -391,7 +391,8 @@
 		line-height: 60rpx;
 		border-radius: 30rpx;
 		text-align: center;
-		@include background_color("background_color");
+		// @include background_color("background_color");
+		background-color: #3bb976;
 		margin-top: 50rpx;
 		color: #FFFFFF;
 	}
@@ -471,7 +472,8 @@
 		align-items: center;
 		font-size: 22rpx;
 		border-color: #3bb976;
-		@include background_color("background_color");
+		// @include background_color("background_color");
+		background-color: #3bb976;
 	}
 
 	.info-right .theme-btn {
@@ -493,7 +495,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background: #00CEC9;
+		background: #55aaff;
 		color: #FFFFFF;
 		box-shadow: 0px 5rpx 5rpx 0px rgba(0, 206, 201, 0.09);
 	}
@@ -502,7 +504,7 @@
 		color: #FFFFFF;
 		width: 51rpx;
 		height: 51rpx;
-		background: #FFCC00;
+		background: #ff5500;
 		display: flex;
 		justify-content: center;
 		align-items: center;
