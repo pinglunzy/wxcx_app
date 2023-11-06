@@ -75,14 +75,14 @@ body {
 	@include font_color("text_color");
 }
 .theme-bg{
-	background-color: #3bb976;
+	background-color: #3bb976 !important;
 }
 .theme-border{
 	border-color: #3bb976;
 }
 .theme-btn{
 	border-color: #3bb976;
-	background-color: #3bb976;
+	background-color: #3bb976 !important;
 	@include text_color("text_color");
 }
 .theme-linbtn{

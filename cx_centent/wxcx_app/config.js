@@ -1,4 +1,4 @@
-var app_url = 'http://127.0.0.20';
+var app_url = 'https://blog.capalot.cn';
 // 如果是本地测试环境
 if(process.env.NODE_ENV === 'development'){
     //#ifdef H5

@@ -5,7 +5,7 @@ export default defineConfig({
 	server: {
 		proxy: {
 			'/api': {
-				 target: 'http://127.0.0.20', //php本地启动端口
+				 target: 'https://blog.capalot.cn', //php本地启动端口
 				changeOrigin: true,
 				rewrite: (path) => path.replace(/^\/api/, ''),
 			},
