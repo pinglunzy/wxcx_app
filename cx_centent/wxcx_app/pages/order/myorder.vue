@@ -61,7 +61,7 @@
 							<view class="o-a pr150">
 								<view class="list d-s-c pr100">
 									<view class="cover mr20" v-for="(img, num) in item.product" :key="num">
-										<image :src="img.image ? img.image.file_path : ''" mode="aspectFit"></image>
+										<image :src="img.image ? img.image.file_path : ''" mode="aspectFill"></image>
 										<view class="mt10 tc f24 text-ellipsis">{{ img.product_name }}</view>
 									</view>
 								</view>

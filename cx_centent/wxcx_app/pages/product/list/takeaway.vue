@@ -114,7 +114,7 @@
                       v-for="(good, key) in item.products"
                       :key="key"
                     >
-                      <image :src="good.product_image" class="image"></image>
+                      <image :src="good.product_image" class="image" mode="aspectFill" ></image>
                       <view class="right">
                         <view class="ww100">
                           <view class="name">{{ good.product_name }}</view>
