@@ -72,7 +72,7 @@
 										<!-- 商品 begin -->
 										<view class="good" @click="gotoDetail(good)"
 											v-for="(good, key) in item.products" :key="key">
-											<image :src="good.product_image" class="image"></image>
+											<image :src="good.product_image" class="image" mode="aspectFill"></image>
 											<view class="right">
 												<text class="name">{{ good.product_name }}</text>
 												<text class="tips text-ellipsis">{{ good.selling_point }}</text>
@@ -306,7 +306,7 @@
 			self.num = e.num || 0;
 			self.addorder_id = e.order_id || 0;
 			uni.setNavigationBarTitle({
-				title: self.table_id == 0 ? '快餐模式' : '堂食点餐'
+				title: self.table_id == 0 ? '快捷下单' : '堂食点餐'
 			});
 		},
 		onShow() {

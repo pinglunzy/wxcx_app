@@ -148,7 +148,7 @@
           ><text class="min-name pr f30 fb">详情</text></view
         >
       </view>
-      <view class="content-box" v-html="detail.content"></view>
+      <view class="content-box content-txt" v-html="detail.content"></view>
     </view>
     <!-- 商品详情模态框 end -->
   </view>
