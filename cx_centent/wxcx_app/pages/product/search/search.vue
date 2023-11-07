@@ -72,7 +72,7 @@
                   v-for="(good, key) in selected"
                   :key="key"
                 >
-                  <image :src="good.product_image" class="image"></image>
+                  <image :src="good.product_image" class="image" mode="aspectFill"></image>
                   <view class="right">
                     <view class="ww100">
                       <view class="name">{{ good.product_name }}</view>
@@ -315,10 +315,10 @@ export default {
 }
 /* 筛选后 */
 .list {
-  width: 100%;
+  /* width: 100%; */
   /* font-size: $font-size-base; */
   background-color: #ffffff;
-  padding:15rpx 0;
+  padding:15rpx;
 }
 .goods .wrapper .list .category {
   width: 100%;
